@@ -37,10 +37,12 @@ function Form(text) {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
     };
+    let DEV_URL = "http://localhost:5000";
+    const PROD_URL = "https://fitness-aserver.herokuapp.com";
 
     // It may impact on server URL when shifting this code to live because this is based on localhost
     axios
-      .post("http://localhost:5000/api/contact", data, { headers: headers })
+      .post(`${PROD_URL}/api/contact`, data, { headers: headers })
       .then((res) => {
         setName("");
         setEmail("");

@@ -196,16 +196,58 @@ export default function BMI() {
 const styles = css`
   height: 100%;
   padding: auto;
+  margin: auto;
   background: url("${ContactBg}") center/cover;
   div {
+    max-width: 92rem;
     padding: 4vh 0 0 0;
     width: 80%;
     margin: auto;
-    width: 27vw;
+    width: 41vw;
+    @media screen and (max-width: 320px) {
+      width: 60vw;
+    }
+    button {
+      width: 41vw;
+    }
+
     form {
-      width: 27vw;
+      width: 41vw;
       input {
-        width: 25vw;
+        width: 35vw;
+      }
+      button {
+        width: 30vw;
+      }
+      @media screen and (max-width: 320px) {
+        width: 60vw;
+        input {
+          width: 50vw;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        div button {
+          width: 30vw;
+        }
+      }
+      @media screen and (max-width: 320px) {
+        div button {
+          width: 50vw;
+        }
+      }
+    }
+    div {
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+        button {
+          width: 40vw;
+        }
+      }
+      @media screen and (max-width: 320px) {
+        flex-direction: column;
+        button {
+          width: 58vw;
+        }
       }
     }
   }

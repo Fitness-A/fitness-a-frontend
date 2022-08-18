@@ -50,7 +50,7 @@ const ProductList = () => {
       [e.target.name]: value,
     });
   };
-  console.log(sort);
+
   return (
     <Container>
       <Navbar />

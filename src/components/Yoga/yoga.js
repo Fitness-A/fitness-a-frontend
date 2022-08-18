@@ -14,18 +14,15 @@ const Yoga = () => (
   <section css={styles} className="main" id="home">
     <Cover />
     <Information />
-    <YogaVideo />    
-    <BasicinfoMain ></BasicinfoMain>
+    <YogaVideo />
+    <BasicinfoMain></BasicinfoMain>
     <Video2></Video2>
     <Aasans></Aasans>
-
-    
-    
   </section>
 );
 const styles = css`
   width: 100%;
-  height: auto;  
-`;  
+  height: auto;
+`;
 
 export default Yoga;

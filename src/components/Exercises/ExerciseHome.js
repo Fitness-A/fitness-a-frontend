@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { jsx, css } from "@emotion/react";
 import React, { useState } from "react";
 import { Box } from "@mui/material";
 
@@ -10,7 +12,7 @@ const ExerciseHome = () => {
   const [bodyPart, setBodyPart] = useState("all");
 
   return (
-    <Box>
+    <Box css={styles}>
       <SearchExercises
         setExercises={setExercises}
         bodyPart={bodyPart}
@@ -24,5 +26,10 @@ const ExerciseHome = () => {
     </Box>
   );
 };
+
+const styles = css`
+  ${"" /* width: 24.219%; */}
+  margin: auto;
+`;
 
 export default ExerciseHome;

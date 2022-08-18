@@ -17,7 +17,8 @@ const styles = css`
   width: 100%;
   max-width: 900px;
   position: absolute;
-  top: 50%;
+  ${"" /* top: 50%; */}
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;

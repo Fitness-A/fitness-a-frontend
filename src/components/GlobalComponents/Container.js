@@ -9,7 +9,7 @@ const Container = ({ children }) => (
 );
 
 const styles = css`
-  max-width: 95%;
+  max-width: 90%;
   ${"" /* max-width: 1140px; */}
   margin: 0 auto;
 

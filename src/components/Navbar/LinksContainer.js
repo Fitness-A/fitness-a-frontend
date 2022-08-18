@@ -3,12 +3,21 @@ import { jsx, css } from "@emotion/react";
 import React from "react";
 import Link from "./Link";
 import Button from "../GlobalComponents/Button";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { emptyCart } from "../../redux/cartRedux";
+import { logout } from "../../redux/apiCalls";
 
 const LinksContainer = ({ hidden }) => {
-  const location = useLocation();
   const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+
+  const logoutMethod = (e) => {
+    e.preventDefault();
+    logout(dispatch).then((value) => {
+      alert(value);
+      dispatch(emptyCart());
+    });
+  };
 
   return (
     <div css={styles} className={(hidden ? "hidden" : "") + " linksContainer"}>
@@ -24,6 +33,15 @@ const LinksContainer = ({ hidden }) => {
       <Link name="MEMBERSHIP" linkTo="/membershipscards" />
       <Link name="ABOUT" linkTo="/about" />
       {!user && <Button text="REGISTER" href="/register" />}
+      {!!user && (
+        <a
+          className="btn css-12kt7ua-Button point"
+          title="Logout"
+          onClick={logoutMethod}
+        >
+          LOGOUT
+        </a>
+      )}
     </div>
   );
 };

@@ -23,7 +23,8 @@ export const login = async (dispatch, user) => {
 
 export const logout = async (dispatch, user) => {
   try {
-    dispatch(logoutStart());
+    await dispatch(logoutStart());
+    return true;
   } catch (err) {
     console.log(err);
   }

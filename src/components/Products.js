@@ -12,6 +12,8 @@ const Container = styled.div`
 `;
 
 const Products = ({ cat, filters, sort }) => {
+  const DEV_URL = "http://localhost:5000";
+  const PROD_URL = "https://fitness-aserver.herokuapp.com";
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -20,8 +22,8 @@ const Products = ({ cat, filters, sort }) => {
       try {
         const res = await axios.get(
           cat
-            ? `http://localhost:5000/api/products?category=${cat}`
-            : "http://localhost:5000/api/products"
+            ? `${PROD_URL}/api/products?category=${cat}`
+            : `${PROD_URL}/api/products`
         );
         setProducts(res.data);
       } catch (err) {}

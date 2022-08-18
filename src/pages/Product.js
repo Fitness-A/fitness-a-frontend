@@ -74,10 +74,12 @@ const FilterColor = styled.div`
   margin: 0px 5px;
   cursor: pointer;
 `;
+
 const Filterf = styled.select`
   margin-left: 10px;
   padding: 5px;
 `;
+
 const FilterSize = styled.select`
   margin-left: 10px;
   padding: 5px;
