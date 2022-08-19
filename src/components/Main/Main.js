@@ -7,15 +7,18 @@ import Overlay from "./Overlay";
 import Info from "./Info";
 import Trainers from "../Trainers/Trainers";
 import FooterMain from "../FooterMain/FooterMain";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Main = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   if (location.state && location.state.hash == "#trainers") {
     let elem = document.getElementById("trainers");
     if (!!elem) {
       elem.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+  } else if (location.state && location.state.toCart === "true") {
+    navigate("/cart");
   }
   return (
     <section css={styles} className="main" id="home">

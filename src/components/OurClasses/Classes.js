@@ -15,11 +15,11 @@ const Classes = ({ text }) => {
         OUR <span>CLASSES</span>
       </h2>
       <Icon />
-      <p>
-        Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra
+      <h3>
+      When it comes to enhancing your fitness and health, group exercise can go a long way in contributing to your journey. As experts in the world of fitness ourselves, we see and experience the many benefits of group exercise within our health club.
         <br />
-        ipsum dolor, ultricies fermentum massa consequat eu.
-      </p>
+        So, we have below classes:- Fitness Class, Muscle Training, Body Building, Yoga Training Class, Advanced Training.
+      </h3>
       <Container>
         <LinksContainer setTraining={setTraining} training={training} />
         <Results training={training} />
@@ -41,10 +41,13 @@ const styles = css`
       color: #ed563b;
     }
   }
-  p {
+  h3 {
+    margin-left: 150px;
+    margin-right: 150px;
     color: #7a7a7a;
     font-size: 15px;
     line-height: 1.7;
+    text-align: center;
   }
   .container {
     display: flex;

@@ -11,7 +11,6 @@ const Nav = () => {
 
   return (
     <nav css={styles}>
-      {hidden == true}
       <Container>
         <Link to="/">
           <Logo />
@@ -46,6 +45,9 @@ const styles = css`
     }
     a {
       text-decoration: none;
+    }
+    i {
+      z-index: 999;
     }
   }
   @media (max-width: 1000px) {

@@ -31,6 +31,7 @@ import FooterMain from "./components/FooterMain/FooterMain";
 
 const App = () => {
   const location = useLocation();
+
   const user = useSelector((state) => state.user.currentUser);
   return (
     <Box width="400px" sx={{ width: { xl: "1488px" } }} m="auto">
@@ -58,11 +59,31 @@ const App = () => {
           <Route element={<Success />} path="/success" />
           <Route element={<AboutUs />} path="/about" />
           <Route
-            element={user ? <Navigate to="/" /> : <Login />}
+            element={
+              user ? (
+                location.state && location.state.toCart === "true" ? (
+                  <Navigate to="/cart" />
+                ) : (
+                  <Navigate to="/" />
+                )
+              ) : (
+                <Login />
+              )
+            }
             path="/login"
           ></Route>
           <Route
-            element={user ? <Navigate to="/" /> : <Register />}
+            element={
+              user ? (
+                location.state && location.state.toCart === "true" ? (
+                  <Navigate to="/cart" />
+                ) : (
+                  <Navigate to="/" />
+                )
+              ) : (
+                <Register />
+              )
+            }
             path="/register"
           ></Route>
         </Routes>

@@ -5,12 +5,12 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Container = styled.div``;
 
@@ -126,8 +126,20 @@ const Button = styled.button`
   }
 `;
 
+const TopButton = styled.button`
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  height: 3em;
+  border: ${(props) => props.type === "filled" && "none"};
+  background-color: ${(props) =>
+    props.type === "filled" ? "black" : "transparent"};
+  color: ${(props) => props.type === "filled" && "white"};
+`;
+
 const Product = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const id = location.pathname.split("/")[2];
 
   const [product, setProduct] = useState({});
@@ -136,6 +148,7 @@ const Product = () => {
   const [f, setF] = useState("");
   const [size, setSize] = useState("");
   const dispatch = useDispatch();
+
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -209,14 +222,14 @@ const Product = () => {
               <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
             <Button onClick={handleClick}>ADD TO CART</Button>
-            <button className="" onClick={handleClick}>
-              CHECKOUT
-            </button>
           </AddContainer>
         </InfoContainer>
+        <TopButton type="filled" onClick={() => navigate("/cart")}>
+          CHECKOUT NOW
+        </TopButton>
       </Wrapper>
-      <Newsletter />
-      <Footer />
+      {/* <Newsletter /> */}
+      {/* <Footer /> */}
     </Container>
   );
 };

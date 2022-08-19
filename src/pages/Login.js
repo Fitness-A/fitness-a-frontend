@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { mobile } from "../responsive";
 import { useState } from "react";
 import { login } from "../redux/apiCalls";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -70,6 +70,7 @@ const Error = styled.span`
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -85,6 +86,14 @@ const Login = () => {
       draggable: true,
       progress: undefined,
     });
+  };
+
+  const loginMethod = () => {
+    if (location.state && location.state.toCart === "true") {
+      navigate("/register", { state: { toCart: "true" } });
+    } else {
+      navigate("/register");
+    }
   };
 
   const handleClick = (e) => {
@@ -137,7 +146,7 @@ const Login = () => {
             </Button>
             {error && <ToastContainer>Something went wrong...</ToastContainer>}
             Not have an account?
-            <Link onClick={() => navigate("/register")}>REGISTER</Link>
+            <Link onClick={() => loginMethod()}>REGISTER</Link>
           </Form>
         </Wrapper>
       </Container>

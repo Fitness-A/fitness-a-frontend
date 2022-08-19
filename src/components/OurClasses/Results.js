@@ -12,7 +12,7 @@ const Results = ({ training }) => (
     {training === "FirstClass" && (
       <Output
         title="First Training Class"
-        info="Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam."
+        info="If you could do one thing to improve your health, strength training should be at the top of your list. It involves using one or more muscle groups to perform a specific task, such as lifting a weight or squatting."
         img={ClassOneBg}
       />
     )}
@@ -20,14 +20,14 @@ const Results = ({ training }) => (
     {training === "SecondClass" && (
       <Output
         title="Second Training Class"
-        info="Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+        info="While modern media and advertising may have us think that yoga is all about physical poses, the entirety of yoga includes a wide range of contemplative and self-disciplinary practices, such as meditation, chanting, mantra, prayer, breath work, ritual, and even selfless action."
         img={ClassTwoBg}
       />
     )}
     {training === "ThirdClass" && (
       <Output
         title="Third Training Class"
-        info="Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id scelerisque felis magna id felis. Proin neque metus, pellentesque pharetra semper vel, accumsan a neque."
+        info="Bodybuilding has such great and healthy impact on muscle, bones and joints. Bodybuilding keeps your body and muscle strong and flexible. Bodybuilding and weight training can definitely help you with osteoporosis and arthritis."
         img={ClassThreeBg}
       />
     )}
@@ -35,7 +35,7 @@ const Results = ({ training }) => (
     {training === "FourthClass" && (
       <Output
         title="Fourth Training Class"
-        info="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean ultrices elementum odio ac tempus. Etiam eleifend orci lectus, eget venenatis ipsum commodo et."
+        info="This training increases muscle strength by making your muscles work against a weight or force. Different forms of resistance training include using free weights, weight machines, resistance bands and your own body weight."
         img={ClassFourBg}
       />
     )}

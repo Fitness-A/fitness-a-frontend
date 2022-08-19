@@ -1,10 +1,9 @@
-import {
-  FavoriteBorderOutlined,
-  SearchOutlined,
-  ShoppingCartOutlined,
-} from "@material-ui/icons";
+import { SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../redux/cartRedux";
 
 const Info = styled.div`
   opacity: 0;
@@ -33,7 +32,7 @@ const Container = styled.div`
   background-color: #f5fbfd;
   position: relative;
 
-  &:hover ${Info}{
+  &:hover ${Info} {
     opacity: 1;
   }
 `;
@@ -68,21 +67,36 @@ const Icon = styled.div`
 `;
 
 const Product = ({ item }) => {
+  console.log(item);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    let quantity = 1;
+    let color = item.color[0];
+    let size = item.size[0];
+    dispatch(addProduct({ ...item, quantity, color, size }));
+    toast.success("Product added successfully!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
   return (
     <Container>
       <Circle />
       <Image src={item.img} />
       <Info>
-        <Icon>
+        <Icon onClick={() => handleClick()}>
           <ShoppingCartOutlined />
         </Icon>
         <Icon>
           <Link to={`/product/${item._id}`}>
-          <SearchOutlined />
+            <SearchOutlined />
           </Link>
-        </Icon>
-        <Icon>
-          <FavoriteBorderOutlined />
         </Icon>
       </Info>
     </Container>

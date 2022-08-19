@@ -35,7 +35,7 @@ const LinksContainer = ({ hidden }) => {
     <div css={styles} className={(hidden ? "hidden" : "") + " linksContainer"}>
       <Link name="HOME" linkTo="/" />
       {/* <Link name="TRAINERS" linkTo={"/#trainers"} /> */}
-      {/* <Link name="CLASSES" linkTo="/classes" /> */}
+      <Link name="CLASSES" linkTo="/classes" />
       <Link name="SCHEDULES" linkTo="/schedules" />
       <Link name="CONTACT" linkTo="/contact" />
       <Link name="EXERCISES" linkTo="/exercises" />
@@ -44,8 +44,8 @@ const LinksContainer = ({ hidden }) => {
       <Link name="BMI" linkTo="/bmi" />
       <Link name="MEMBERSHIP" linkTo="/membership" />
       <Link name="ABOUT" linkTo="/about" />
-      {!user && <Button text="REGISTER" href="/register" />}
-      {!!user && (
+      {hidden && !user && <Button text="REGISTER" href="/register" />}
+      {hidden && !!user && (
         <a className="custom-button" title="Logout" onClick={logoutMethod}>
           LOGOUT
         </a>
