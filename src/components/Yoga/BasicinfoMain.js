@@ -8,19 +8,21 @@ import Basicinfo from "./Basicinfo";
 import y1 from "../Image/y1.png";
 
 const BasicinfoMain = () => (
-  <section css={styles} className="membershipscards" id="membershipscards">
+  <section css={styles} className="membership" id="membershipscards">
     <h2>
-    Yoga: <span>How it Works</span>
+      Yoga: <span>How it Works</span>
     </h2>
     <Icon />
     <p className="pMember">
-    Yoga is a group of physical, mental, and spiritual practices or disciplines. Yoga originated in ancient India. Yoga meaning in Sanskrit 'Union'. Yoga helps to discipline body and mind. It is an exercise that can be done by anyone who wants to do it.
-    The eight limbs of yoga are yama (abstinences), niyama (observances), asana (yoga postures), pranayama (breath control), pratyahara (withdrawal of the senses), dharana (concentration), dhyana (meditation) and samadhi (absorption)."
+      Yoga is a group of physical, mental, and spiritual practices or
+      disciplines. Yoga originated in ancient India. Yoga meaning in Sanskrit
+      'Union'. Yoga helps to discipline body and mind. It is an exercise that
+      can be done by anyone who wants to do it. The eight limbs of yoga are yama
+      (abstinences), niyama (observances), asana (yoga postures), pranayama
+      (breath control), pratyahara (withdrawal of the senses), dharana
+      (concentration), dhyana (meditation) and samadhi (absorption)."
     </p>
-  
-    
   </section>
-  
 );
 
 const styles = css`
@@ -28,7 +30,7 @@ const styles = css`
   padding: 120px 0;
   text-align: center;
   margin-bottom: 10px;
-  
+
   h2 {
     color: black;
     font-weight: 900;
@@ -39,7 +41,7 @@ const styles = css`
       color: #ed563b;
     }
   }
-  .pMember{
+  .pMember {
     color: black;
   }
   p {

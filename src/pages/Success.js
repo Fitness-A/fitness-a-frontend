@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
 import { userRequest } from "../requestMethods";
+import { toast, ToastContainer } from "react-toastify";
 
 const Success = () => {
   const location = useLocation();
@@ -25,6 +26,18 @@ const Success = () => {
         });
         console.log(res);
         setOrderId(res.data._id);
+        toast.success("Redirecting to Home page...", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
       } catch (err) {
         console.log(err);
       }
@@ -42,6 +55,7 @@ const Success = () => {
         justifyContent: "center",
       }}
     >
+      <ToastContainer />
       {orderId
         ? `Order has been created successfully. Your order number is ${orderId}`
         : `Successfull. Your order is being prepared...`}

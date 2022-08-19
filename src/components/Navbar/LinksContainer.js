@@ -6,39 +6,47 @@ import Button from "../GlobalComponents/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { emptyCart } from "../../redux/cartRedux";
 import { logout } from "../../redux/apiCalls";
+import { Navigate, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const LinksContainer = ({ hidden }) => {
   const user = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const logoutMethod = (e) => {
     e.preventDefault();
-    logout(dispatch).then((value) => {
-      alert(value);
+    logout(dispatch).then(() => {
       dispatch(emptyCart());
+      toast.success("Logged out successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      navigate("/");
     });
   };
 
   return (
     <div css={styles} className={(hidden ? "hidden" : "") + " linksContainer"}>
       <Link name="HOME" linkTo="/" />
-      <Link name="TRAINERS" linkTo={"/#trainers"} />
+      {/* <Link name="TRAINERS" linkTo={"/#trainers"} /> */}
       {/* <Link name="CLASSES" linkTo="/classes" /> */}
-      <Link name="SCHEDULES" linkTo="/schedule" />
+      <Link name="SCHEDULES" linkTo="/schedules" />
       <Link name="CONTACT" linkTo="/contact" />
       <Link name="EXERCISES" linkTo="/exercises" />
       <Link name="YOGA" linkTo="/yoga" />
       <Link name="PRODUCTS" linkTo="/products" />
       <Link name="BMI" linkTo="/bmi" />
-      <Link name="MEMBERSHIP" linkTo="/membershipscards" />
+      <Link name="MEMBERSHIP" linkTo="/membership" />
       <Link name="ABOUT" linkTo="/about" />
       {!user && <Button text="REGISTER" href="/register" />}
       {!!user && (
-        <a
-          className="btn css-12kt7ua-Button point"
-          title="Logout"
-          onClick={logoutMethod}
-        >
+        <a className="custom-button" title="Logout" onClick={logoutMethod}>
           LOGOUT
         </a>
       )}

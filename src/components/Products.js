@@ -30,7 +30,6 @@ const Products = ({ cat, filters, sort }) => {
     };
     getProducts();
   }, [cat]);
-
   useEffect(() => {
     cat &&
       setFilteredProducts(
@@ -40,6 +39,9 @@ const Products = ({ cat, filters, sort }) => {
           )
         )
       );
+    filteredProducts.map((item) => {
+      console.log(item.id);
+    });
   }, [products, cat, filters]);
 
   useEffect(() => {

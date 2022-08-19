@@ -2,25 +2,20 @@
 import { jsx, css } from "@emotion/react";
 import React from "react";
 
-const AasansCard = ({ title, name, desc, img, url, asone,
-     astwo, asthree, asfour, asfive, assix, asseven, aseight, asnine}) => (
-  <div css={styles} className="card">
-    <img src={img} alt="Aasans" />
-    <h5>{title}</h5>
-    <h3>{name}</h3>
-    <p>{desc}</p>
-    <h3>{url}</h3>
-    <a href="https://www.youtube.com/watch?v=1ElcyxQCZ4w">{asone}</a>
-    <a href="https://www.youtube.com/watch?v=kuSZEZ0fCY0">{astwo}</a>
-    <a href="https://www.youtube.com/watch?v=XeXz8fIZDCE">{asthree}</a>
-    <a href="https://www.youtube.com/watch?v=XeXz8fIZDCE">{asfour}</a>
-    <a href="https://www.youtube.com/watch?v=XeXz8fIZDCE">{asfive}</a>
-    <a href="https://www.youtube.com/watch?v=XeXz8fIZDCE">{assix}</a>
-    <a href="https://www.youtube.com/watch?v=XeXz8fIZDCE">{asseven}</a>
-    <a href="https://www.youtube.com/watch?v=XeXz8fIZDCE">{aseight}</a>
-    <a href="https://www.youtube.com/watch?v=XeXz8fIZDCE">{asnine}</a>
-  </div>
-);
+const AasansCard = ({ title, name, desc, img, url, link }) => {
+  return (
+    <div css={styles} className="card">
+      <img src={img} alt="Aasans" />
+      <h5>{title}</h5>
+      <h3>{name}</h3>
+      <p>{desc}</p>
+      <h3>{url}</h3>
+      <a href={link} target="_blank">
+        Learn More
+      </a>
+    </div>
+  );
+};
 
 const styles = css`
   width: 100%;
@@ -50,6 +45,9 @@ const styles = css`
     font-size: 15px;
     font-weight: 400;
     line-height: 1.7;
+  }
+  a {
+    padding: 0.5em;
   }
   @media (max-width: 830px) {
     max-width: 540px;

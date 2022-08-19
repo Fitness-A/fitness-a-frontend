@@ -11,12 +11,6 @@ const Contact = () => (
       <Map />
       <Form />
     </Container>
-    <footer>
-      <p>
-        Copyright &copy; {new Date().getFullYear()} SSYS Studio - Designed by ❤{" "}
-        <strong>SSYS Group</strong>
-      </p>
-    </footer>
   </section>
 );
 

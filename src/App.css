@@ -40,3 +40,25 @@
 .point {
   cursor: pointer;
 }
+
+.custom-button {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: inline-block;
+  background: #ed563b;
+  color: #fff;
+  font-size: 14px;
+  padding: 12px 14px;
+  -webkit-transition: background 500ms ease-in-out;
+  transition: background 500ms ease-in-out;
+}
+
+.empty-cart {
+  font-size: 2em;
+  color: #ed563b;
+}
+
+.highlight-form {
+  border: 5px solid rgb(237, 86, 59);
+  border-radius: 1em;
+}

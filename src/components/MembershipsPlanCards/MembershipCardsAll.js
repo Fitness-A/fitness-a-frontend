@@ -1,17 +1,38 @@
 /** @jsxImportSource @emotion/react */
 import { jsx, css } from "@emotion/react";
-import React from "react";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
+const MembershipCardsAll = ({ title, price, desc, joinnow }) => {
+  const navigate = useNavigate();
 
-const MembershipCardsAll = ({ title, price, desc, joinnow }) => (
-  <div css={styles} className="card">
-    <h5>{title}</h5>
-    <h3>{price}</h3>
-    <p>{desc}</p>
-    <h4>{joinnow}</h4>
- 
-  </div>
-);
+  const subscribeMethod = () => {
+    toast.info(
+      "Please contact us though contact form for further discussion.",
+      {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+    navigate("/contact", { state: { contactForm: true } });
+  };
+
+  return (
+    <div css={styles} className="card point">
+      <h5>{title}</h5>
+      <h3>{price}</h3>
+      <p>{desc}</p>
+      <h4 className="point" onClick={() => subscribeMethod()}>
+        {joinnow}
+      </h4>
+    </div>
+  );
+};
 
 const styles = css`
   width: 100%;
@@ -28,11 +49,11 @@ const styles = css`
     color: #ed563b;
     margin: 26px 0 9px 0;
     font-weight: 500;
-    text-align:center;
+    text-align: center;
     font-size: 25px;
   }
   h3 {
-    text-align:center;
+    text-align: center;
     color: #232d39;
     letter-spacing: 1px;
   }
@@ -40,8 +61,8 @@ const styles = css`
     color: #ed563b;
     margin: 26px 0 9px 0;
     font-weight: 500;
-    text-align:center;
-    background:#ed563b;
+    text-align: center;
+    background: #ed563b;
     padding: 12px 14px;
     font-size: 20px;
     color: #fff;

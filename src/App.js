@@ -1,11 +1,11 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
 import "./App.css";
 import Main from "./components/Main/Main";
 import GymProgram from "./components/GymProgram/GymProgram";
 import Member from "./components/Member/Member";
-// import Classes from "./components/OurClasses/Classes";
+import Classes from "./components/OurClasses/Classes";
 import Schedule from "./components/Schedule/Schedule";
 import Trainers from "./components/Trainers/Trainers";
 import Contact from "./components/Contact/Contact";
@@ -27,8 +27,10 @@ import { useSelector } from "react-redux";
 import AboutUs from "./components/AboutUs/AboutUs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import FooterMain from "./components/FooterMain/FooterMain";
 
 const App = () => {
+  const location = useLocation();
   const user = useSelector((state) => state.user.currentUser);
   return (
     <Box width="400px" sx={{ width: { xl: "1488px" } }} m="auto">
@@ -43,18 +45,18 @@ const App = () => {
           <Route element={<ExerciseDetail />} path="/exercise/:id" />
           <Route element={<Member />} path="/member" />
           <Route element={<Yoga />} path="/Yoga" />
-          {/* <Route element={<Classes />} path="/classes" /> */}
-          <Route element={<Schedule />} path="/schedule" />
-          <Route element={<Trainers />} path="/trainers" />
+          <Route element={<Classes />} path="/classes" />
+          <Route element={<Schedule />} path="/schedules" />
+          {/* <Route element={<Trainers />} path="/trainers" /> */}
           <Route element={<Contact />} path="/contact" />
-          <Route element={<MembershipMain />} path="/membershipscards" />
+          <Route element={<MembershipMain />} path="/membership" />
           <Route element={<Home />} path="/products" />
           <Route element={<ProductList />} path="/products/:category" />
           <Route element={<Product />} path="/product" />
           <Route element={<Product />} path="/product/:id" />
           <Route element={<Cart />} path="/cart" />
           <Route element={<Success />} path="/success" />
-          <Route element={<AboutUs />} path="/about-us" />
+          <Route element={<AboutUs />} path="/about" />
           <Route
             element={user ? <Navigate to="/" /> : <Login />}
             path="/login"
@@ -64,6 +66,7 @@ const App = () => {
             path="/register"
           ></Route>
         </Routes>
+        {location.pathname != "/" && <FooterMain />}
       </div>
     </Box>
   );

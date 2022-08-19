@@ -4,7 +4,7 @@ import styled from "styled-components";
 // import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { mobile } from "../responsive";
+import { mobile, tablet } from "../responsive";
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
@@ -53,7 +53,7 @@ const TopText = styled.span`
 const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({ flexDirection: "column" })}
+  ${tablet({ flexDirection: "column" })};
 `;
 
 const Info = styled.div`
@@ -63,7 +63,7 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({ flexDirection: "column" })}
+  ${tablet({ flexDirection: "column" })};
 `;
 
 const ProductDetail = styled.div`
@@ -159,6 +159,11 @@ const Button = styled.button`
   font-weight: 600;
 `;
 
+const EmptyDiv = styled.div`
+  font-weight: 600;
+  height: 35vh;
+`;
+
 const Cart = () => {
   const image = "https://avatars.githubusercontent.com/u/1486366?v=4";
   const cart = useSelector((state) => state.cart);
@@ -189,6 +194,11 @@ const Cart = () => {
     stripeToken && makeRequest();
   }, [stripeToken, cart.total, navigate]);
 
+  const handleClick = () => {
+    alert();
+    // dispatch(addProduct({ ...product, quantity, color, size }));
+  };
+
   return (
     <Container>
       <Navbar />
@@ -199,26 +209,32 @@ const Cart = () => {
           <Link to="/products">
             <TopButton>CONTINUE SHOPPING</TopButton>
           </Link>
-
-          <StripeCheckout
-            name="fitness Studio"
-            image={image}
-            billingAddress
-            shippingAddress
-            description={`Your total is $${cart.total}`}
-            amount={cart.total * 100}
-            token={onToken}
-            stripeKey={KEY}
-          >
-            <TopButton type="filled">CHECKOUT NOW</TopButton>
-          </StripeCheckout>
+          {cart.products && cart.products.length > 1 && (
+            <StripeCheckout
+              name="fitness Studio"
+              image={image}
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}
+              stripeKey={KEY}
+            >
+              <TopButton type="filled">CHECKOUT NOW</TopButton>
+            </StripeCheckout>
+          )}
         </Top>
+        {cart.products && cart.products.length < 1 && (
+          <EmptyDiv>
+            <p className="empty-cart">Your cart is empty!</p>
+          </EmptyDiv>
+        )}
         <Bottom>
           <Info>
             {cart.products.map((product) => (
-              <Product>
+              <Product className="m-5">
                 <ProductDetail>
-                  <Image src={product.img} />
+                  <Image onClick={() => handleClick} src={product.img} />
                   <Details>
                     <ProductName>
                       <b>Product:</b> {product.title}
@@ -250,44 +266,47 @@ const Cart = () => {
             ))}
             <Hr />
           </Info>
-          <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>
-                $ {(cart.total / 60).toFixed(2)}
-              </SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>
-                $ -{(cart.total * 0.008).toFixed(2)}
-              </SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            <StripeCheckout
-              name="fitness Studio"
-              image={image}
-              billingAddress
-              shippingAddress
-              description={`Your total is $${cart.total}`}
-              amount={cart.total * 100}
-              token={onToken}
-              stripeKey={KEY}
-            >
-              <Button>CHECKOUT NOW</Button>
-            </StripeCheckout>
-          </Summary>
+          {cart.products && cart.products.length > 1 && (
+            <Summary>
+              <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+              <SummaryItem>
+                <SummaryItemText>Subtotal</SummaryItemText>
+                <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              </SummaryItem>
+              <SummaryItem>
+                <SummaryItemText>Estimated Shipping</SummaryItemText>
+                <SummaryItemPrice>
+                  {cart.total > 5000
+                    ? "Free"
+                    : "$" + (cart.total / 60).toFixed(2)}
+                </SummaryItemPrice>
+              </SummaryItem>
+              <SummaryItem>
+                <SummaryItemText>Shipping Discount</SummaryItemText>
+                <SummaryItemPrice>
+                  $ -{(cart.total * 0.008).toFixed(2)}
+                </SummaryItemPrice>
+              </SummaryItem>
+              <SummaryItem type="total">
+                <SummaryItemText>Total</SummaryItemText>
+                <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              </SummaryItem>
+              <StripeCheckout
+                name="fitness Studio"
+                image={image}
+                billingAddress
+                shippingAddress
+                description={`Your total is $${cart.total}`}
+                amount={cart.total * 100}
+                token={onToken}
+                stripeKey={KEY}
+              >
+                <Button>CHECKOUT NOW</Button>
+              </StripeCheckout>
+            </Summary>
+          )}
         </Bottom>
       </Wrapper>
-      <Footer />
     </Container>
   );
 };

@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -154,10 +156,20 @@ const Product = () => {
 
   const handleClick = () => {
     dispatch(addProduct({ ...product, quantity, color, size }));
+    toast.success("Product added successfully!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
   return (
     <Container>
       <Announcement />
+      <Navbar />
       <Wrapper>
         <ImgContainer>
           <Image src={product.img} />
@@ -181,14 +193,14 @@ const Product = () => {
                 ))}
               </FilterSize>
             </Filter>
-            <Filter>
+            {/* <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize onChange={(e) => setSize(e.target.value)}>
                 {product.size?.map((s) => (
                   <FilterSizeOption key={s}>{s}</FilterSizeOption>
                 ))}
               </FilterSize>
-            </Filter>
+            </Filter> */}
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
@@ -197,6 +209,9 @@ const Product = () => {
               <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
             <Button onClick={handleClick}>ADD TO CART</Button>
+            <button className="" onClick={handleClick}>
+              CHECKOUT
+            </button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

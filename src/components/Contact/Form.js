@@ -6,13 +6,27 @@ import axios from "axios";
 import Button from "../GlobalComponents/Button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useLocation } from "react-router-dom";
 
 function Form(text) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
-
+  const location = useLocation();
+  if (location.state && location.state.contactForm) {
+    let formEl;
+    setTimeout(() => {
+      formEl = document.getElementById("contact-form");
+    }, 800);
+    let interval = setInterval(() => {
+      formEl.classList.toggle("highlight-form");
+    }, 100);
+    setTimeout(() => {
+      clearInterval(interval);
+      formEl.classList.remove("highlight-form");
+    }, 2500);
+  }
   function formSubmission(e) {
     e.preventDefault();
     if (!name || !email) {
@@ -73,7 +87,7 @@ function Form(text) {
   return (
     <div css={styles} className="formContainer">
       <ToastContainer />
-      <form onSubmit={formSubmission}>
+      <form onSubmit={formSubmission} id="contact-form">
         <input
           name="username"
           type="text"
@@ -103,7 +117,7 @@ function Form(text) {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         ></textarea>
-        <button type="submit" className="btn css-12kt7ua-Button">
+        <button type="submit" className="custom-button">
           SEND MESSAGE
         </button>
       </form>

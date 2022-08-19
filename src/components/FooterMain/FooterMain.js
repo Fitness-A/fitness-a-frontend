@@ -1,45 +1,53 @@
 /** @jsxImportSource @emotion/react */
 import { jsx, css } from "@emotion/react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Link from "../Navbar/Link";
 
-const FooterMain = () => (
-  <section css={styles}>
-    <footer className="footer-distributed">
-      <div className="footer-right">
-        <h4 css={styles}>
-          <span>F</span>ITNESS
-        </h4>
-      </div>
+const FooterMain = () => {
+  const navigate = useNavigate();
+  return (
+    <section css={styles}>
+      <footer className="footer-distributed">
+        <div className="footer-right">
+          <h4 css={styles}>
+            FITNESS<span> A</span>
+          </h4>
+        </div>
 
-      <div className="footer-left">
-        <p className="footer-links">
-          <a className="#home" href="#">
-            Home
-          </a>
+        <div className="footer-left">
+          <p className="footer-links">
+            <a href="/">Home</a>
 
-          <a href="/trainers">Trainers</a>
+            <a
+              className="point"
+              onClick={() => {
+                navigate("/#trainers", { state: { hash: "#trainers" } });
+              }}
+            >
+              Trainers
+            </a>
 
-          <a href="/classes">Classes</a>
+            <a href="/classes">Classes</a>
 
-          <a href="/schedules">Schedules</a>
+            <a href="/schedules">Schedules</a>
 
-          <a href="/contact">Contact</a>
+            <a href="/contact">Contact</a>
 
-          <a href="/bmi">BMI</a>
+            <a href="/bmi">BMI</a>
 
-          <a href="/membershipscards">Membership</a>
-        </p>
+            <a href="/membership">Membership</a>
+          </p>
 
-        <p>Copyright Fitness &copy; 2022</p>
-      </div>
-    </footer>
-  </section>
-);
+          <p>Copyright Fitness &copy; 2022</p>
+        </div>
+      </footer>
+    </section>
+  );
+};
 
 const styles = css`
   width: 100%;
-
   text-align: center;
   background: black;
   margin-bottom: 0px;

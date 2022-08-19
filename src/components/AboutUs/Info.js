@@ -32,23 +32,22 @@ const Info = () => (
 );
 
 const styles = css`
-  width: 100%;
-  
+  width: 100%;  
  #low
  {
-  padding:20px;
+  padding: 0 2em 2em 2em;
+  text-align: left;
  }
-  
   text-align: center;
 
   p {
-    font-size: 17px;
     line-height: 1;
     font-weight: 900;
     letter-spacing: 1.2px;
   }
+
   h2 {
-    font-size: 90px;
+    font-size: 4em;
     line-height: 1;
     font-weight: 900;
     margin: 36px 0;
@@ -58,7 +57,7 @@ const styles = css`
 
   }
   h4 {
-    font-size: 50px;
+    font-size: 2.5em;
     line-height: 1;
     font-weight: 900;
     margin: 36px 0;

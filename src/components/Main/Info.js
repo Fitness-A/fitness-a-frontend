@@ -7,9 +7,9 @@ const Info = () => (
   <div css={styles} className="info">
     <p>WORK HARDER, GET STRONGER</p>
     <h1>
-      EASY WITH OUR <span>GYM</span>
+      <span>LET's GET FIT</span>
     </h1>
-    <Button text="BECOME A MEMBER" />
+    <Button text="JOIN US" />
   </div>
 );
 
