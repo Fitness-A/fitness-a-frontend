@@ -2,7 +2,7 @@
 import { jsx, css } from "@emotion/react";
 import React from "react";
 import Button from "../GlobalComponents/Button";
-import aboutus from "../../assets/icons/aboutus.jpeg";
+import aboutus from "../../assets/icons/bg.jpg";
 
 const Info = () => (
   <div css={styles} className="info">
@@ -33,10 +33,12 @@ const Info = () => (
 );
 
 const styles = css`
- color: white;
- background: url("${aboutus}") no-repeat center/cover;
+  color: rgb(255 255 255 / 70%);
+  background: url("${aboutus}") no-repeat center/cover;
+  ${"" /* background: #5a544b; */}
   width: 100%;  
-  height: 30em;
+  height: 33em;
+  padding: 2em;
  #low
  {
   padding: 0 2em 2em 2em;

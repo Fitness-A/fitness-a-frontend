@@ -51,6 +51,7 @@ const styles = css`
   text-align: center;
   background: black;
   margin-bottom: 0px;
+  padding: 1.5em;
   h2 {
     color: #fff;
     font-weight: 900;
